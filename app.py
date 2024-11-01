@@ -4,6 +4,7 @@ from pydantic import BaseModel
 import google.generativeai as genai
 from google.generativeai import GenerativeModel
 import random
+# imported fastapi and google generativeai
 # Configure Gemini API (replace with your API key)
 genai.configure(api_key="AIzaSyDkAfPr2MhxSVfHE39ZDfPUzSiIq7Bktbo")
 model = GenerativeModel("gemini-1.5-flash")  # Replace with your preferred Gemini model version
@@ -22,9 +23,9 @@ app.add_middleware(
 class PromptRequest(BaseModel):
     prompt: str
     compliment_type: str = "random" 
-
+# basemodel is created
 async def get_creative_response(compliment_type: str) -> str:
-    try:
+    try: # words to be added in the compliments
         compliment_words = [
     "amazing",
     "brilliant",
@@ -64,7 +65,7 @@ async def get_creative_response(compliment_type: str) -> str:
             "exciting": f"Generate a random exciting and motivating {random_word} compliment",
             "body_positivity": f"Generate a random body positive {random_word} compliment",
             "comparison": f"Generate a  random {random_word} compliment comparing to something positive",
-        }
+        }  # commands for generativeai
         response = model.generate_content(type_mapping[compliment_type])
         return response.text.strip()
     except Exception as e:
@@ -79,7 +80,7 @@ async def generate_phrase(request: PromptRequest):
 
 @app.get("/api/compliment")
 async def generate_compliment(compliment_type):
-    # Use user prompt to generate AI compliment
+    # the code that connects gives the value to be returned to the frontend
     ai_compliment = await get_creative_response( compliment_type)
 
     return {"compliment": ai_compliment}
