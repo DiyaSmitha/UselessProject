@@ -54,7 +54,7 @@ class _ComplimentPageState extends State<ComplimentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Random Compliment Generator'),
+        title: Text('Compliment Generator'),
       ),
       body: Center(
         child: Column(
