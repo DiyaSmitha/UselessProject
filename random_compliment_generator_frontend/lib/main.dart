@@ -5,7 +5,7 @@ import 'dart:convert';
 void main() {
   runApp(RandomComplimentApp());
 }
-
+//frontend flutter code
 class RandomComplimentApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class _ComplimentPageState extends State<ComplimentPage> {
   String complimentType = "random"; // Default compliment type
 
   Future<void> fetchCompliment(String type) async {
-    final url = Uri.parse('http://127.0.0.1:8000/api/compliment?compliment_type=$type'); // Replace with your backend URL
+    final url = Uri.parse('http://127.0.0.1:8000/api/compliment?compliment_type=$type'); // backend URL
     final response = await http.get(url, headers: {"Content-Type": "application/json"});
 
     if (response.statusCode == 200) {
@@ -71,7 +71,7 @@ class _ComplimentPageState extends State<ComplimentPage> {
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: [//buttons
                 ElevatedButton(
                   onPressed: () => fetchCompliment("random"),
                   child: Text('Random'),
@@ -81,7 +81,7 @@ class _ComplimentPageState extends State<ComplimentPage> {
                 ),
                 SizedBox(width: 10),
                 ElevatedButton(
-                  onPressed: () => fetchCompliment("fun"),
+                  onPressed: () => fetchCompliment("fun"),//indicates the backend ai to work and produce fun compliment when the button is pressed
                   child: Text('Fun'),
                   style: ElevatedButton.styleFrom(
                     // primary: complimentType == "fun" ? Colors.blue : Colors.grey,
@@ -89,7 +89,7 @@ class _ComplimentPageState extends State<ComplimentPage> {
                 ),
                 SizedBox(width: 10),
                 ElevatedButton(
-                  onPressed: () => fetchCompliment("exciting"),
+                  onPressed: () => fetchCompliment("exciting"),//indicates the backend ai to work and produce exciting compliment when the button is pressed
                   child: Text('Exciting'),
                   style: ElevatedButton.styleFrom(
                     // primary: complimentType == "exciting" ? Colors.blue : Colors.grey,
@@ -102,7 +102,7 @@ class _ComplimentPageState extends State<ComplimentPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () => fetchCompliment("body_positivity"),
+                  onPressed: () => fetchCompliment("body_positivity"),//indicates the backend ai to work and produce body positive compliment when the button is pressed
                   child: Text('Body Positive'),
                   style: ElevatedButton.styleFrom(
                     // primary: complimentType == "body_positivity" ? Colors.blue : Colors.grey,
@@ -110,7 +110,7 @@ class _ComplimentPageState extends State<ComplimentPage> {
                 ),
                 SizedBox(width: 10),
                 ElevatedButton(
-                  onPressed: () => fetchCompliment("comparison"),
+                  onPressed: () => fetchCompliment("comparison"),//indicates the backend ai to work and produce comparison compliment when the button is pressed
                   child: Text('Comparison'),
                   style: ElevatedButton.styleFrom(
                     // primary: complimentType == "comparison" ? Colors.blue : Colors.grey,
@@ -124,3 +124,4 @@ class _ComplimentPageState extends State<ComplimentPage> {
     );
   }
 }
+//code end
